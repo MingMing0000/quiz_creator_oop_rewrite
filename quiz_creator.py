@@ -11,3 +11,6 @@ class QuizCreator:
         choice_b = input("Input choice B: ")
         choice_c = input("Input choice C: ")
         choice_d = input("Input choice D: ")
+    
+    def ask_answer(self):
+        answer = input("Input the correct answer from the choices (A, B, C, D)")
