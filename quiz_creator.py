@@ -3,4 +3,11 @@ class QuizCreator:
         pass
 
     def ask_question(self):
-        question = input('Input your question: ')
+        question = input("Input your question: ")
+
+    def ask_choices(self):
+        print("Input the choices")
+        choice_a = input("Input choice A: ")
+        choice_b = input("Input choice B: ")
+        choice_c = input("Input choice C: ")
+        choice_d = input("Input choice D: ")
