@@ -6,7 +6,7 @@ class QuizCreator:
 
     def ask_question(self):
         question = input("Input your question: ")
-        question.store_items(question)
+        self.store_items(question)
 
     def ask_choices(self):
         print("Input the choices")
@@ -14,16 +14,12 @@ class QuizCreator:
         choice_b = input("Input choice B: ")
         choice_c = input("Input choice C: ")
         choice_d = input("Input choice D: ")
-        choice_a.store_items(choice_a)
-        choice_b.store_items(choice_b)
-        choice_c.store_items(choice_c)
-        choice_d.store_items(choice_d)
+        self.store_items(choice_a, choice_b, choice_c, choice_d)
     
     def ask_answer(self):
         answer = input("Input the correct answer from the choices (A, B, C, D): ")
-        answer.store_items(answer)
+        self.store_items(answer)
         
-    
     def store_items(self, question, choice_a, choice_b, choice_c, choice_d, answer):
         self.quiz_items.append({
             "question" : question,
