@@ -20,7 +20,6 @@ class QuizCreator:
             'choices': [choice_a, choice_b, choice_c, choice_d],
             'answer': answer
         })
-
     
     def save_quiz(self):
         quiz_name = input('Enter the file name of the quiz: ')
