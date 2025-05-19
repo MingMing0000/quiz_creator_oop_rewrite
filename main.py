@@ -23,7 +23,6 @@ while True:
                 make_quiz.ask_choices()
                 make_quiz.ask_answer()
             elif add_more.lower() == 'n':
-                print(make_quiz.quiz_items)
                 save = input('Do you want to save the quiz? (y/n): ')
                 if save.lower() == 'y':
                     make_quiz.save_quiz()
