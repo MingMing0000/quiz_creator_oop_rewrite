@@ -35,3 +35,8 @@ while True:
                     print('Invalid option, please try again.\n')    
             else:
                 print('Invalid option, please try again.\n')
+    elif choice == '2':
+        print('\n--Exiting...--')
+        break
+    else:
+        print('Invalid option, please try again.\n')
