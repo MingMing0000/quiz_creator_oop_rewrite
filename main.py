@@ -16,7 +16,6 @@ while True:
         make_quiz.ask_choices()
         make_quiz.ask_answer()
         make_quiz.add_quiz_item()
-        print('\n---Your quiz has been created.---\n')
         while True:
             add_more = input('Do you want to add another question? (y/n): ')
             if add_more.lower() == 'y':
@@ -29,6 +28,7 @@ while True:
                 save = input('Do you want to save the quiz? (y/n): ')
                 if save.lower() == 'y':
                     make_quiz.save_quiz()
+                    print('\n---Your quiz has been created.---\n')
                     break
                 elif save.lower() == 'n':
                     print('--Quiz not saved.--\n')
