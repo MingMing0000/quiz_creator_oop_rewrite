@@ -15,6 +15,14 @@ while True:
         make_quiz.ask_question()
         make_quiz.ask_choices()
         make_quiz.ask_answer()
+        make_quiz.store_items(
+            make_quiz.question,
+            make_quiz.choice_a,
+            make_quiz.choice_b,
+            make_quiz.choice_c,
+            make_quiz.choice_d,
+            make_quiz.answer
+        )
         while True:
             add_more = input('Do you want to add another question? (y/n): ')
             if add_more.lower() == 'y':
@@ -22,6 +30,14 @@ while True:
                 make_quiz.ask_question()
                 make_quiz.ask_choices()
                 make_quiz.ask_answer()
+                make_quiz.store_items(
+                    make_quiz.question,
+                    make_quiz.choice_a,
+                    make_quiz.choice_b,
+                    make_quiz.choice_c,
+                    make_quiz.choice_d,
+                    make_quiz.answer
+                )
             elif add_more.lower() == 'n':
                 save = input('Do you want to save the quiz? (y/n): ')
                 if save.lower() == 'y':
