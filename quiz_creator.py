@@ -21,9 +21,11 @@ class QuizCreator:
         self.quiz_items.append({"answer" : answer})
 
     def save_quiz(self):
+        quiz_name = input('Enter the file name of the quiz: ')
+        quiz_name += '.txt'
         print("Saving quiz...")
         with open(quiz_name, 'a') as file:
-            for quiz in quiz_list:
+            for quiz in self.quiz_items:
                 file.write(f"Question: {quiz['question']}\n")
                 file.write(f"a) {quiz['choices'][0]}\n")
                 file.write(f"b) {quiz['choices'][1]}\n")
