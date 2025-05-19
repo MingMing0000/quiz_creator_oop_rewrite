@@ -5,7 +5,7 @@ class QuizCreator:
         self.quiz_items = []
     
     #ask the user for the question, choices, and answer
-    def make_quiz(self):
+    def create_quiz(self):
         question = input('Input your question: ')
         print('Input your choices')
         choice_a = input('Input choice a: ')
