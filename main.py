@@ -12,16 +12,12 @@ while True:
     choice = input('Choose an option: ')
     if choice == '1':
         print()
-        make_quiz.ask_question()
-        make_quiz.ask_choices()
-        make_quiz.ask_answer()
+        make_quiz.create_quiz()
         while True:
             add_more = input('Do you want to add another question? (y/n): ')
             if add_more.lower() == 'y':
                 print()
-                make_quiz.ask_question()
-                make_quiz.ask_choices()
-                make_quiz.ask_answer()
+                make_quiz.create_quiz()
             elif add_more.lower() == 'n':
                 save = input('Do you want to save the quiz? (y/n): ')
                 if save.lower() == 'y':
