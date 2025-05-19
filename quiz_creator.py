@@ -2,10 +2,11 @@
 
 class QuizCreator:
     def __init__(self):
-        pass
+        self.quiz_items = []
 
     def ask_question(self):
         question = input("Input your question: ")
+        self.quiz_items.append({"question" : question})
 
     def ask_choices(self):
         print("Input the choices")
@@ -13,9 +14,11 @@ class QuizCreator:
         choice_b = input("Input choice B: ")
         choice_c = input("Input choice C: ")
         choice_d = input("Input choice D: ")
+        self.quiz_items.append({"choices" : [choice_a, choice_b, choice_c, choice_d]})
     
     def ask_answer(self):
         answer = input("Input the correct answer from the choices (A, B, C, D)")
+        self.quiz_items.append({"answer" : answer})
 
     def save_quiz(self):
         print("Saving quiz...")
