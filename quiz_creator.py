@@ -17,7 +17,7 @@ class QuizCreator:
     def ask_answer(self):
         self.answer = input("Input the correct answer from the choices (A, B, C, D): ")
 
-        #append the inputs into a list
+    def add_quiz_item(self):
         self.quiz_items.append({
             'question': self.question,
             'choices': [self.choice_a, self.choice_b, self.choice_c, self.choice_d],
