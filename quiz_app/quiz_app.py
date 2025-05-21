@@ -16,6 +16,7 @@ class QuizApp(tk.Tk):
         self.open_button = tk.Button(self, text="Open Quiz File", font=("Roboto", 15,) fg="white", bg="#e12885")
         self.open_button.pack(pady=10)
         self.questions = []
+        self.current_index = 0
 
     #create a new window to display the quiz
     def the_quiz(self):
@@ -26,7 +27,18 @@ class QuizApp(tk.Tk):
         self.quiz_window.resizable(False, False)
 
         #add a label for the question
-        self.the_question = tk.Label(self.quiz_window, text=self.questions[self]['question'], font=("Roboto", 20), bg="#e12885")
+        self.the_question = tk.Label(self.quiz_window, text=self.questions[self.current_index]['question'], font=("Roboto", 20), bg="#e12885")
+        self.the_question.pack(pady=45)
+
+        #add buttons for the choices
+        self.choice_a = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][0])
+        self.choice_b = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][1])
+        self.choice_c = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][2]) 
+        self.choice_d = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][3])
+        self.choice_a.pack(pady=10)
+        self.choice_b.pack(pady=10)
+        self.choice_c.pack(pady=10)
+        self.choice_d.pack(pady=10)
 
     #add method to open the quiz file
     def open_quiz_file(self):
