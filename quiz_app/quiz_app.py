@@ -15,6 +15,7 @@ class QuizApp(tk.Tk):
         #add a button to open the quiz file
         self.open_button = tk.Button(self, text="Open Quiz File", font=("Roboto", 15, "white"), bg="#e12885")
         self.open_button.pack(pady=10)
+        self.questions = []
 
     #create a new window to display the quiz
     def the_quiz(self):
@@ -26,3 +27,22 @@ class QuizApp(tk.Tk):
     #add method to open the quiz file
     def open_quiz_file(self):
         self.file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+    
+    #add method to read the quiz file's content
+    def read_quiz_file(self):
+        with open(self.file_path, 'r', encoding="utf-8") as file:
+            quiz_lines = file.readlines()
+
+        for line in range(0, len(quiz_lines), 7):  # Assuming 7 lines per quiz item
+            question = quiz_lines[line].strip().replace('Question: ', '')
+            choice_a_text = quiz_lines[line + 1].strip()
+            choice_b_text = quiz_lines[line + 2].strip()
+            choice_c_text = quiz_lines[line + 3].strip()
+            choice_d_text = quiz_lines[line + 4].strip()
+            answer = quiz_lines[line + 5].strip().replace('Answer: ', '')
+
+            self.questions.append({
+                'question': question,
+                'choices': [choice_a_text, choice_b_text, choice_c_text, choice_d_text],
+                'answer': answer
+            })
