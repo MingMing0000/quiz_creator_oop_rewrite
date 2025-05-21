@@ -41,6 +41,12 @@ class QuizApp(tk.Tk):
         self.choice_c.pack(pady=10)
         self.choice_d.pack(pady=10)
 
+        #add a label for feedback when checking answer
+        self.feedback_label = tk.Label(self.quiz_window, text="", font=("Roboto", 20), bg="#86cecb")
+        #add a label for next question countdown timer
+        self.countdown_label = tk.Label(self.quiz_window, text="", font=("Roboto", 20), bg="#86cecb")
+        #add a label for score
+        self.score_label = tk.Label(self.quiz_window, text="", font=("Roboto", 20), bg="#86cecb")
         #randomize the order of the questions
         random.shuffle(self.questions)
 
