@@ -1,6 +1,7 @@
 #import libraries needed
 import tkinter as tk
 from tkinter import filedialog
+import random
 
 # Create the class QuizApp
 class QuizApp(tk.Tk):
@@ -40,6 +41,9 @@ class QuizApp(tk.Tk):
         self.choice_c.pack(pady=10)
         self.choice_d.pack(pady=10)
 
+        #randomize the order of the questions
+        random.shuffle(self.questions)
+
     #add method to open the quiz file
     def open_quiz_file(self):
         self.file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
@@ -62,5 +66,3 @@ class QuizApp(tk.Tk):
                 'choices': [choice_a_text, choice_b_text, choice_c_text, choice_d_text],
                 'answer': answer
             })
-
-    
