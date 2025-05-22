@@ -14,10 +14,12 @@ class QuizApp(tk.Tk):
         self.label = tk.Label(self, text="Welcome to the Quiz App", font="Roboto 20", bg="#86cecb")
         self.label.pack(pady=10)
         #add a button to open the quiz file
-        self.open_button = tk.Button(self, text="Open Quiz File", font=("Roboto", 15,) fg="white", bg="#e12885")
+        self.open_button = tk.Button(self, text="Open Quiz File", font=("Roboto", 15), fg="white", bg="#e12885", command=self.open_quiz_file)
         self.open_button.pack(pady=10)
         self.questions = []
         self.current_index = 0
+        self.question_count = 0
+        self.score = 0
 
     #create a new window to display the quiz
     def the_quiz(self):
@@ -72,3 +74,18 @@ class QuizApp(tk.Tk):
                 'choices': [choice_a_text, choice_b_text, choice_c_text, choice_d_text],
                 'answer': answer
             })
+
+    #add method to check the answer
+    def check_answer(self):
+        self.correct_answer = self.questions[self.question_count]["answer"]
+        if self.questions[self.question_count]['choices'][self.current_index][0] == self.correct_answer:
+            self.feedback_label.config(text="✔️ Correct!", fg="green")
+            self.score += 1
+        else:
+            self.feedback_label.config(text=f"❌ Wrong! The correct answer is: {self.correct_answer}", fg="red")
+        self.question_count += 1
+        
+        if self.question_count < len(self.questions):
+            self.countdown(3)  # 3-second delay before next question
+        else:
+            self.score_label.config(text=f"Quiz finished! Your score is: {self.score}/{len(self.questions)}", fg="purple")
