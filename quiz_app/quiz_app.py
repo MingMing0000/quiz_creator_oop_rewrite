@@ -48,12 +48,15 @@ class QuizApp(tk.Tk):
         self.feedback_label.pack(pady=10)
         #add a label for next question countdown timer
         self.countdown_label = tk.Label(self.quiz_window, text="", font=("Roboto", 20), bg="#86cecb")
-        self.countdown_label.pack(pady=1)
+        self.countdown_label.pack(pady=10)
         #add a label for score
         self.score_label = tk.Label(self.quiz_window, text="", font=("Roboto", 20), bg="#86cecb")
         self.score_label.pack(pady=10)
         #randomize the order of the questions
         random.shuffle(self.questions)
+        #add button to exit the quiz
+        self.exit_button = tk.Button(self.quiz_window, text="Exit", font=("Roboto", 10), fg="white", bg="#e12885", command=self.quiz_window.destroy)
+        self.exit_button.pack(padx=15, pady=10, side=tk.RIGHT)                 
 
     #add method to open the quiz file
     def open_quiz_file(self):
