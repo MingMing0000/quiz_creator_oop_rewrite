@@ -78,7 +78,7 @@ class QuizApp(tk.Tk):
     #add method to check the answer
     def check_answer(self):
         self.correct_answer = self.questions[self.question_count]["answer"]
-        if self.questions[self.question_count]['choices'][self.current_index][0] == self.correct_answer:
+        if self.questions[self.question_count]['choices'][self.current_index][0] == self.correct_answer: #first letter of the answer string
             self.feedback_label.config(text="✔️ Correct!", fg="green")
             self.score += 1
         else:
