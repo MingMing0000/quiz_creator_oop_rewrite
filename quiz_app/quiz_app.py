@@ -11,11 +11,14 @@ class QuizApp(tk.Tk):
         self.configure(bg="#86cecb")
         self.geometry("640x360")
         #add welcome text
-        self.label = tk.Label(self, text="Welcome to the Quiz App", font="Roboto 20", bg="#86cecb")
-        self.label.pack(pady=10)
+        self.label = tk.Label(self, text="Welcome to the Quiz App!", font="Roboto 20", bg="#86cecb")
+        self.label.pack(pady=75)
         #add a button to open the quiz file
         self.open_button = tk.Button(self, text="Open Quiz File", font=("Roboto", 15), fg="white", bg="#e12885", command=self.open_quiz_file)
         self.open_button.pack(pady=10)
+        #add a button to exit the app
+        self.exit_button = tk.Button(self, text="Exit App", font=("Roboto", 15), fg="white", bg="#e12885", command=self.destroy)
+        self.exit_button.pack(pady=10)
         self.questions = []
         
 
@@ -37,7 +40,7 @@ class QuizApp(tk.Tk):
 
         #add a label for the question
         self.the_question = tk.Label(self.quiz_window, text=self.questions[self.current_index]['question'], font=("Roboto", 30), bg="#86cecb", wraplength=800)
-        self.the_question.pack(pady=45)
+        self.the_question.pack(pady=30)
 
         #add buttons for the choices
         self.choice_a = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][0], font=("roboto", 25), width=30, fg="white", bg="#e12885", command=lambda: self.check_answer(0))
@@ -59,8 +62,8 @@ class QuizApp(tk.Tk):
         self.score_label = tk.Label(self.quiz_window, text="", font=("Roboto", 20), bg="#86cecb")
         self.score_label.pack(pady=10)
         #add button to exit the quiz
-        self.exit_button = tk.Button(self.quiz_window, text="Exit", font=("Roboto", 10), fg="white", bg="#e12885", command=self.quiz_window.destroy)
-        self.exit_button.pack(padx=15, pady=10, side=tk.RIGHT)  
+        self.exit_button = tk.Button(self.quiz_window, text="Exit", font=("Roboto", 10), fg="white", bg="#e12885", width=10, command=self.quiz_window.destroy)
+        self.exit_button.pack(padx=5, pady=5, side=tk.RIGHT)  
 
     #add method to open the quiz file
     def open_quiz_file(self):
