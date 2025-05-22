@@ -58,6 +58,7 @@ class QuizApp(tk.Tk):
     #add method to open the quiz file
     def open_quiz_file(self):
         self.file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        self.read_quiz_file()
     
     #add method to read the quiz file's content
     def read_quiz_file(self):
@@ -77,11 +78,12 @@ class QuizApp(tk.Tk):
                 'choices': [choice_a_text, choice_b_text, choice_c_text, choice_d_text],
                 'answer': answer
             })
+        self.the_quiz()
 
     #add method to check the answer
-    def check_answer(self):
+    def check_answer(self, current_index):
         self.correct_answer = self.questions[self.question_count]["answer"]
-        if self.questions[self.question_count]['choices'][self.current_index][0] == self.correct_answer: #first letter of the answer string
+        if self.questions[self.question_count]['choices'][current_index][0] == self.correct_answer: #first letter of the answer string
             self.feedback_label.config(text="✔️ Correct!", fg="green")
             self.score += 1
         else:
@@ -97,7 +99,7 @@ class QuizApp(tk.Tk):
     def countdown_timer(self, seconds):
         if seconds > 0:
             self.countdown_label.config(text=f"Next question in {seconds}", fg="blue")
-            self.after(1000, self.countdown, seconds - 1)  
+            self.after(1000, self.countdown_timer, seconds - 1)  
         else:
             self.move_to_next_question()
 
@@ -106,3 +108,8 @@ class QuizApp(tk.Tk):
         if self.question_count < len(self.questions):
             self.feedback_label.config(text="")
             self.countdown_label.config(text="")
+            self.the_question.config(text=self.questions[self.question_count]['question'])
+            self.choice_a.config(text=self.questions[self.question_count]["choices"][0])
+            self.choice_b.config(text=self.questions[self.question_count]["choices"][1])
+            self.choice_c.config(text=self.questions[self.question_count]["choices"][2])
+            self.choice_d.config(text=self.questions[self.question_count]["choices"][3])
