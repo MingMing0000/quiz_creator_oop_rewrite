@@ -17,9 +17,7 @@ class QuizApp(tk.Tk):
         self.open_button = tk.Button(self, text="Open Quiz File", font=("Roboto", 15), fg="white", bg="#e12885", command=self.open_quiz_file)
         self.open_button.pack(pady=10)
         self.questions = []
-        self.current_index = 0
-        self.question_count = 0
-        self.score = 0
+        
 
     #create a new window to display the quiz
     def the_quiz(self):
@@ -28,6 +26,14 @@ class QuizApp(tk.Tk):
         self.quiz_window.geometry("1280x720")
         self.quiz_window.configure(bg="#86cecb")
         self.quiz_window.resizable(False, False)
+
+        #randomize the order of the questions
+        random.shuffle(self.questions)
+        
+        #move the variables to the quiz window
+        self.current_index = 0
+        self.question_count = 0
+        self.score = 0     
 
         #add a label for the question
         self.the_question = tk.Label(self.quiz_window, text=self.questions[self.current_index]['question'], font=("Roboto", 30), bg="#86cecb", wraplength=800)
@@ -52,11 +58,9 @@ class QuizApp(tk.Tk):
         #add a label for score
         self.score_label = tk.Label(self.quiz_window, text="", font=("Roboto", 20), bg="#86cecb")
         self.score_label.pack(pady=10)
-        #randomize the order of the questions
-        random.shuffle(self.questions)
         #add button to exit the quiz
         self.exit_button = tk.Button(self.quiz_window, text="Exit", font=("Roboto", 10), fg="white", bg="#e12885", command=self.quiz_window.destroy)
-        self.exit_button.pack(padx=15, pady=10, side=tk.RIGHT)                 
+        self.exit_button.pack(padx=15, pady=10, side=tk.RIGHT)  
 
     #add method to open the quiz file
     def open_quiz_file(self):
@@ -68,6 +72,9 @@ class QuizApp(tk.Tk):
         with open(self.file_path, 'r', encoding="utf-8") as file:
             quiz_lines = file.readlines()
 
+        #clear the questions list and put the new file's content
+        self.questions.clear()
+        
         for line in range(0, len(quiz_lines), 7):  # Assuming 7 lines per quiz item
             question = quiz_lines[line].strip().replace('Question: ', '')
             choice_a_text = quiz_lines[line + 1].strip()
