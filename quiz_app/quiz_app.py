@@ -86,6 +86,14 @@ class QuizApp(tk.Tk):
         self.question_count += 1
         
         if self.question_count < len(self.questions):
-            self.countdown(3)  # 3-second delay before next question
+            self.countdown_timer(3)  # 3-second delay before next question
         else:
             self.score_label.config(text=f"Quiz finished! Your score is: {self.score}/{len(self.questions)}", fg="purple")
+    
+    #add method for countdown timer
+    def countdown_timer(self, seconds):
+        if seconds > 0:
+            self.countdown_label.config(text=f"Next question in {seconds}", fg="blue")
+            self.after(1000, self.countdown, seconds - 1)  
+        else:
+            self.move_to_next_question()
