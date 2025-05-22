@@ -34,10 +34,10 @@ class QuizApp(tk.Tk):
         self.the_question.pack(pady=45)
 
         #add buttons for the choices
-        self.choice_a = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][0], font=("roboto", 25), width=30, fg="white", bg="#e12885")
-        self.choice_b = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][1], font=("roboto", 25), width=30, fg="white", bg="#e12885")
-        self.choice_c = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][2], font=("roboto", 25), width=30, fg="white", bg="#e12885") 
-        self.choice_d = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][3], font=("roboto", 25), width=30, fg="white", bg="#e12885")
+        self.choice_a = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][0], font=("roboto", 25), width=30, fg="white", bg="#e12885", command=lambda: self.check_answer(0))
+        self.choice_b = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][1], font=("roboto", 25), width=30, fg="white", bg="#e12885", command=lambda: self.check_answer(1))
+        self.choice_c = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][2], font=("roboto", 25), width=30, fg="white", bg="#e12885", command=lambda: self.check_answer(2)) 
+        self.choice_d = tk.Button(self.quiz_window, text=self.questions[self.current_index]["choices"][3], font=("roboto", 25), width=30, fg="white", bg="#e12885", command=lambda: self.check_answer(3))
         self.choice_a.pack(pady=10)
         self.choice_b.pack(pady=10)
         self.choice_c.pack(pady=10)
