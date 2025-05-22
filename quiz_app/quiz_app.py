@@ -97,3 +97,9 @@ class QuizApp(tk.Tk):
             self.after(1000, self.countdown, seconds - 1)  
         else:
             self.move_to_next_question()
+
+    #add method to move to next question
+    def move_to_next_question(self):
+        if self.question_count < len(self.questions):
+            self.feedback_label.config(text="")
+            self.countdown_label.config(text="")
